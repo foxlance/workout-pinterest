@@ -43,6 +43,10 @@ gem 'acts_as_votable', '~> 0.10.0'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
+
+  gem 'rspec-rails', '~> 3.4', '>= 3.4.2'
+  gem 'capybara', '~> 2.7', '>= 2.7.1'
+  gem 'factory_girl', '~> 4.7'
 end
 
 group :development do
