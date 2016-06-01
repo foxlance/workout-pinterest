@@ -8,14 +8,27 @@
     = csrf_meta_tags
 
   %body
-    .container
-      .row
-        .col-sm-12
-          %h1
+    %nav.navbar.navbar-default.navbar-fixed-top
+      .container
+        .navbar-header
+          %a{:href => root_path, :class => 'navbar-brand'}
             Workout Pinterest
+        %ul.nav.navbar-nav.navbar-right
+          - if user_signed_in?
+            %li
+              = link_to 'New Pin', new_pin_path
+            %li
+              = link_to 'Log out', destroy_user_session_path, method: :delete
+          - else
+            %li
+              = link_to 'Sign in', new_user_session_path
+            %li
+              = link_to 'Register', new_user_registration_path
+
 
     .container
       .row
         .col-sm-12
           = render 'layouts/notice'
           = yield
+
