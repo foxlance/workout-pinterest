@@ -15,7 +15,7 @@ class PinsController < ApplicationController
   end
 
   def create
-    @pin = current_user.pins.create(pin_params)
+    @pin = current_user.pins.build(pin_params)
 
     if @pin.save
       redirect_to @pin, notice: 'Pin was successfully created.'
@@ -36,6 +36,13 @@ class PinsController < ApplicationController
     else
       render 'edit'
     end
+  end
+
+  def destroy
+    @pin = current_user.pins.find(params[:id])
+    @pin.destroy
+
+    redirect_to pins_path, notice: 'Pin was deleted.'
   end
 
 

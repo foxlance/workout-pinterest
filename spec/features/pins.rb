@@ -31,11 +31,13 @@ RSpec.feature "Pins" do
     user = create(:user)
     pin  = create(:pin)
 
-    visit edit_pin_path(pin)
+    visit new_user_session_path
 
     fill_in "Email", :with => user.email
     fill_in "Password", :with => user.password
     click_button "Log in"
+
+    visit edit_pin_path(pin)
 
     fill_in 'pin_name',        :with => pin.name + ' edit'
     fill_in "pin_description", :with => pin.description + ' edit'
@@ -46,15 +48,42 @@ RSpec.feature "Pins" do
     expect(page).to have_text pin.description + ' edit'
   end
 
-  # scenario "Check for validation rules" do
-  #   visit new_pin_path
+  scenario "Delete existing pin" do
+    user = create(:user)
 
-  #   pin = create(:pin)
+    visit new_pin_path
 
-  #   fill_in 'pin_name',        :with => ''
-  #   fill_in "pin_description", :with => ''
-  #   click_button "Create"
+    fill_in "Email", :with => user.email
+    fill_in "Password", :with => user.password
+    click_button "Log in"
 
-  #   expect(page).to have_text "can't be blank"
-  # end
+    pin = create(:pin)
+
+    fill_in 'Name',        :with => pin.name
+    fill_in "Description", :with => pin.description
+    click_button "Create"
+
+    expect(page).to have_text "Pin was successfully created."
+
+    click_link 'Delete'
+    expect(page).to have_text "Pin was deleted."
+  end
+
+  scenario "Check for validation rules" do
+    visit new_pin_path
+
+    user = create(:user)
+
+    fill_in "Email", :with => user.email
+    fill_in "Password", :with => user.password
+    click_button "Log in"
+
+    pin = create(:pin)
+
+    fill_in 'pin_name',        :with => ''
+    fill_in "pin_description", :with => ''
+    click_button "Create"
+
+    expect(page).to have_text "can't be blank"
+  end
 end
