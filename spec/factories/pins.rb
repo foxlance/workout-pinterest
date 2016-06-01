@@ -2,8 +2,12 @@
 # Add - config.include FactoryGirl::Syntax::Methods - to configure block
 
 FactoryGirl.define do
-  factory :pins do
-    title "My favorite pin"
-    body "This should be interesting."
+  factory :pin do
+    name "My favorite pin"
+    description "This should be interesting."
+  end
+  factory :user do
+    email 'lance@example.com'
+    password 'qawsedrf'
   end
 end

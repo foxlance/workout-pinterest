@@ -1,0 +1,21 @@
+!!!
+%html
+  %head
+    %title
+      Workout Pinterest
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+
+  %body
+    .container
+      .row
+        .col-sm-12
+          %h1
+            Workout Pinterest
+
+    .container
+      .row
+        .col-sm-12
+          = render 'layouts/notice'
+          = yield
