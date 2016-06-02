@@ -4,7 +4,7 @@
       = @pin.name
   %div.panel-body
     = @pin.description
-  - if current_user.id == @pin.user_id
+  - if current_user.present? && current_user.id == @pin.user_id
     %div.panel-footer
       %div{:role => "group", :class=>'btn-group'}
         = link_to 'Edit', edit_pin_path(@pin), class: 'btn btn-default'
