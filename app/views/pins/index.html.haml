@@ -2,17 +2,9 @@
   .row
     - @pins.each do |pin|
       %div.panel.panel-default
-        %div.panel-heading
-          %b
-            = pin.name
+
         %div.panel-body
-          = pin.description
-        - if policy(pin).edit? || policy(pin).destroy?
-          %div.panel-footer
-            %div{:role => "group", :class=>'btn-group'}
-              - if policy(pin).edit?
-                = link_to 'Edit', edit_pin_path(pin), class: 'btn btn-default'
-              - if policy(pin).destroy?
-                = link_to 'Delete', pin_path(pin), method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn btn-default'
-
-
+          = link_to (image_tag pin.image.url(:thumb)), pin
+        %div.panel-footer
+          %b= pin.name
+          %p= pin.description

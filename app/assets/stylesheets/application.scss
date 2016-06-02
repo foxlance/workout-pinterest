@@ -16,14 +16,35 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+.container.main {
+  padding-bottom:50px;
+}
+
 div.notifications {
   margin-top: 75px;
 }
 
-#pins div.panel-default {
-  width:350px;
-  display:inline-block;
-  margin-right:10px;
+#pins {
+  div.panel-default {
+    width:350px;
+    display:inline-block;
+    margin-right:10px;
+  }
+  div.panel-body {
+    padding:0px
+  }
+}
+
+div.panel.panel-default.show {
+  max-width:802px;
+  margin:0 auto;
+  div.panel-body {
+    text-align:right;
+  }
+  div.panel-body {
+    text-align:center;
+    padding:0px
+  }
 }
 
 #pins div.panel-default:last-child {

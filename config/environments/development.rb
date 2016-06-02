@@ -51,4 +51,6 @@ Rails.application.configure do
     Bullet.rails_logger = true
     Bullet.add_footer = true
   end
+
+  # Paperclip.options[:command_path] = 'C:/Program Files/ImageMagick-7.0.1-Q16'
 end

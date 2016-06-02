@@ -7,7 +7,7 @@ class PinsController < ApplicationController
   end
 
   def index
-    @pins = Pin.includes(:user).all()
+    @pins = Pin.all()
   end
 
   def new
@@ -53,7 +53,7 @@ class PinsController < ApplicationController
   private
 
   def pin_params
-    params.require(:pin).permit(:name, :description)
+    params.require(:pin).permit(:name, :description, :image)
   end
 
 end
