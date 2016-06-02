@@ -4,8 +4,10 @@
       = @pin.name
   %div.panel-body
     = @pin.description
-  - if current_user.present? && current_user.id == @pin.user_id
+  - if policy(@pin).edit? || policy(@pin).destroy?
     %div.panel-footer
       %div{:role => "group", :class=>'btn-group'}
-        = link_to 'Edit', edit_pin_path(@pin), class: 'btn btn-default'
-        = link_to 'Delete', pin_path(@pin), method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn btn-default'
+        - if policy(@pin).edit?
+          = link_to 'Edit', edit_pin_path(@pin), class: 'btn btn-default'
+        - if policy(@pin).destroy?
+          = link_to 'Delete', pin_path(@pin), method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn btn-default'

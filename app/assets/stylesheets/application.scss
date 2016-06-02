@@ -16,8 +16,12 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+div.notifications {
+  margin-top: 75px;
+}
+
 #pins div.panel-default {
-  width:300px;
+  width:350px;
   display:inline-block;
   margin-right:10px;
 }

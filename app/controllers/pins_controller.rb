@@ -7,7 +7,7 @@ class PinsController < ApplicationController
   end
 
   def index
-    @pins = Pin.all()
+    @pins = Pin.includes(:user).all()
   end
 
   def new
@@ -26,10 +26,12 @@ class PinsController < ApplicationController
 
   def edit
     @pin = Pin.find(params[:id])
+    authorize @pin
   end
 
   def update
     @pin = Pin.find(params[:id])
+    authorize @pin
 
     if @pin.update(pin_params)
       redirect_to @pin, notice: 'Pin was successfully edited.'
@@ -40,6 +42,8 @@ class PinsController < ApplicationController
 
   def destroy
     @pin = current_user.pins.find(params[:id])
+    authorize @pin
+
     @pin.destroy
 
     redirect_to pins_path, notice: 'Pin was deleted.'
