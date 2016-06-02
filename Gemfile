@@ -56,6 +56,8 @@ group :development do
 
   gem 'better_errors', '~> 2.1', '>= 2.1.1'
   gem 'meta_request', '~> 0.4.0'
+
+  gem 'bullet', '~> 5.1'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
