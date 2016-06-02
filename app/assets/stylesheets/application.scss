@@ -10,7 +10,18 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
+ *= require 'masonry/transitions'
  */
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+#pins div.panel-default {
+  width:300px;
+  display:inline-block;
+  margin-right:10px;
+}
+
+#pins div.panel-default:last-child {
+  margin-right:0;
+}

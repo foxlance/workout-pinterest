@@ -1,18 +1,17 @@
-.container
+#pins.container.transitions-enabled
   .row
     - @pins.each do |pin|
-      .col-sm-3
-        %div.panel.panel-default
-          %div.panel-heading
-            %b
-              = pin.name
-          %div.panel-body
-            = pin.description
-          - if user_signed_in?
-            - if current_user.id == pin.user_id
-              %div.panel-footer
-                %div{:role => "group", :class=>'btn-group'}
-                  = link_to 'Edit', edit_pin_path(pin), class: 'btn btn-default'
-                  = link_to 'Delete', pin_path(pin), method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn btn-default'
+      %div.panel.panel-default
+        %div.panel-heading
+          %b
+            = pin.name
+        %div.panel-body
+          = pin.description
+        - if user_signed_in?
+          - if current_user.id == pin.user_id
+            %div.panel-footer
+              %div{:role => "group", :class=>'btn-group'}
+                = link_to 'Edit', edit_pin_path(pin), class: 'btn btn-default'
+                = link_to 'Delete', pin_path(pin), method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn btn-default'
 
 
