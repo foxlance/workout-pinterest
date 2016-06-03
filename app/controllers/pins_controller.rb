@@ -53,12 +53,15 @@ class PinsController < ApplicationController
     @pin = Pin.find(params[:id])
 
     @pin.liked_by current_user
+    notice = 'You liked this Pin!'
 
     unless @pin.vote_registered?
       @pin.disliked_by current_user
+      notice = 'You unliked this Pin!'
     end
 
-    redirect_to :back, notice: 'You liked this Pin!'
+    # Do not use :back, if your logged out, you wont redirect properly
+    redirect_to @pin, notice: notice
   end
 
 
