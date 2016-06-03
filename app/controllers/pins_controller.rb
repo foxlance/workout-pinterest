@@ -49,6 +49,18 @@ class PinsController < ApplicationController
     redirect_to pins_path, notice: 'Pin was deleted.'
   end
 
+  def like
+    @pin = Pin.find(params[:id])
+
+    @pin.liked_by current_user
+
+    unless @pin.vote_registered?
+      @pin.disliked_by current_user
+    end
+
+    redirect_to :back, notice: 'You liked this Pin!'
+  end
+
 
   private
 

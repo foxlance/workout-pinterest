@@ -16,7 +16,13 @@
         = image_tag @pin.image.url(:medium), class: "center-block img-responsive"
       %div.panel-footer
         %p.heading= @pin.name
-        %p.description= @pin.description
+        %p.description
+          = @pin.description
+          %br
+          %br
+          = link_to like_pin_path do
+            %i.glyphicon.glyphicon-heart
+          = @pin.get_likes.size
         %p.user
           = image_tag "/img/blankavatar.jpg", class: "img-circle"
           = @pin.user.email

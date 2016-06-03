@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
 
   devise_for :users
-  resources :pins
+  resources :pins do
+    member do
+      get "like", to: "pins#like"
+    end
+  end
   root to: "pins#index"
 
   # The priority is based upon order of creation: first created -> highest priority.
