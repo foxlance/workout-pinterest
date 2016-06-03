@@ -2,12 +2,17 @@
   .row
     - @pins.each do |pin|
       %div.panel.panel-default
-
-        %div.panel-body
-          = link_to (image_tag pin.image.url(:thumb), class: "img-responsive"), pin
-        %div.panel-footer
-          %p.heading= pin.name
-          %p.description= pin.description
-          %p.user
-            = image_tag "/img/blankavatar.jpg", class: "img-circle"
-            = pin.user.email
+        = link_to pin do
+          %div.panel-body
+            = image_tag pin.image.url(:thumb), class: "img-responsive"
+          %div.panel-footer
+            %p.heading= pin.name
+            %p.description
+              = pin.description
+              %br/
+              %span{:class=> ('red' if pin.get_likes.size > 0)}
+                %i.glyphicon.glyphicon-heart
+                = pin.get_likes.size
+            %p.user
+              = image_tag "/img/blankavatar.jpg", class: "img-circle"
+              = pin.user.email

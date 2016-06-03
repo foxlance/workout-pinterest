@@ -16,8 +16,9 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-$red: #B90D0D;
-$red-light: #D70F0F;
+$red: #DD0808;
+$red-light: #F02121;
+$red-dark: #A20101;
 
 body {
   background-color:#e9e9e9;
@@ -72,6 +73,15 @@ div.notifications {
       border-top:solid #e9e9e9 1px;
       font-size:.9em;
       color:#666;
+
+      span {
+        margin-top:5px;
+        display: block;
+        text-align: right;
+      }
+      span.red {
+        color:$red;
+      }
     }
   }
 }
@@ -92,6 +102,9 @@ div.notifications {
      filter: brightness(70%);
    }
   }
+  div.panel-footer:hover {
+    background-color:#fff;
+  }
 }
 
 #show {
@@ -107,6 +120,11 @@ div.notifications {
   }
 }
 
+div.panel.panel-default a {
+  text-decoration: none;
+  color: initial;
+}
+
 div.panel.panel-default.show {
   max-width:802px;
   margin:0 auto;
@@ -117,6 +135,7 @@ div.panel.panel-default.show {
     text-align:center;
     padding:0px
   }
+
 }
 
 #pins div.panel-default:last-child {
