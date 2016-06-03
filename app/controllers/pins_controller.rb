@@ -7,7 +7,7 @@ class PinsController < ApplicationController
   end
 
   def index
-    @pins = Pin.all()
+    @pins = Pin.includes(:user).all()
   end
 
   def new

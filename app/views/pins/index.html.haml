@@ -4,7 +4,10 @@
       %div.panel.panel-default
 
         %div.panel-body
-          = link_to (image_tag pin.image.url(:thumb)), pin
+          = link_to (image_tag pin.image.url(:thumb), class: "img-responsive"), pin
         %div.panel-footer
-          %b= pin.name
-          %p= pin.description
+          %p.heading= pin.name
+          %p.description= pin.description
+          %p.user
+            = image_tag "/img/blankavatar.jpg", class: "img-circle"
+            = pin.user.email
