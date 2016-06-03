@@ -1,5 +1,7 @@
 = simple_form_for @pin do |f|
   = f.input :name
+  - if (@pin.image.present?)
+    = image_tag @pin.image.url(:thumb), class: "img-responsive"
   = f.input :image, as: :file
   = f.input :description, as: :text
   = f.button :submit, html: {name: 'Create'}
