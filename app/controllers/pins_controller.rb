@@ -7,7 +7,7 @@ class PinsController < ApplicationController
   end
 
   def index
-    @pins = Pin.includes(:user).all()
+    @pins = Pin.includes(:user).order('created_at DESC').all()
   end
 
   def new
