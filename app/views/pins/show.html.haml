@@ -31,6 +31,9 @@
 
     - if @pin.comments.present?
       #comments.panel.panel-default
+        .panel-heading
+          %b
+            = pluralize @pin.comments.size, "Comment"
         .panel-body
           - @pin.comments.includes(:user).each do |comment|
             .media
@@ -46,7 +49,7 @@
     .panel.panel-default
       .panel-heading
         %b
-          Comments
+          Send in a comment
       #comment-form.panel-body
         - if user_signed_in?
           = simple_form_for([@pin, @pin.comments.build]) do |f|

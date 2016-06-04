@@ -10,8 +10,10 @@
             %p.description
               = pin.description
               %br/
-              %span.heart{:class=> ('red' if pin.get_likes.size > 0)}
-                %i.glyphicon.glyphicon-heart
+              %span.heart
+                %i.glyphicon.glyphicon-comment{:class=> ('red' if pin.comments.size > 0)}
+                = pin.comments.size
+                %i.glyphicon.glyphicon-heart{:class=> ('red' if pin.get_likes.size > 0)}
                 = pin.get_likes.size
             %p.user
               = image_tag "/img/blankavatar.jpg", class: "img-circle"
