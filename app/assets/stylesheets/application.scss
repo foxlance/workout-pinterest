@@ -74,7 +74,7 @@ div.notifications {
       font-size:.9em;
       color:#666;
 
-      span {
+      span.heart {
         margin-top:5px;
         display: block;
         text-align: right;
@@ -105,6 +105,9 @@ div.notifications {
   div.panel-footer:hover {
     background-color:#fff;
   }
+  div.panel-footer p.user {
+    padding-top:0px;
+  }
 }
 
 #show {
@@ -116,7 +119,20 @@ div.notifications {
   }
   i.glyphicon.glyphicon-heart {
     color:$red;
-    font-size:1.5em;
+    font-size: 1em;
+    top: 1px;
+  }
+  a.btn.square {
+    padding:7px;
+    padding-bottom: 3px;
+    top: 2px;
+    position: relative;
+  }
+  span.pin-date {
+    color:#909090;
+    display: block;
+    font-size:.8em;
+    font-weight: normal;
   }
 }
 
@@ -140,4 +156,15 @@ div.panel.panel-default.show {
 
 #pins div.panel-default:last-child {
   margin-right:0;
+}
+
+#comments {
+  .avatar {
+    width:25px;
+  }
+  span.date {
+    font-size:.9em;
+    font-weight: normal;
+    color: #8D8D8D;
+  }
 }

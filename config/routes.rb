@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   devise_for :users
   resources :pins do
+    post "comments", to: "comments#create"
     member do
       get "like", to: "pins#like"
     end

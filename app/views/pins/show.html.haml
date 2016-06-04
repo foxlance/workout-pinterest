@@ -15,14 +15,42 @@
       %div.panel-body
         = image_tag @pin.image.url(:medium), class: "center-block img-responsive"
       %div.panel-footer
-        %p.heading= @pin.name
+        %p.heading
+          %span.pull-right
+            = link_to like_pin_path, class: "btn btn-default square" do
+              %i.glyphicon.glyphicon-heart
+              = @pin.get_likes.size
+          = @pin.name
+          %span.pin-date
+            = @pin.created_at.strftime("%A, %d %b %Y")
         %p.description
           = @pin.description
-          %br
-          %br
-          = link_to like_pin_path do
-            %i.glyphicon.glyphicon-heart
-          = @pin.get_likes.size
         %p.user
           = image_tag "/img/blankavatar.jpg", class: "img-circle"
           = @pin.user.name
+
+    - if @pin.comments.present?
+      #comments.panel.panel-default
+        .panel-body
+          - @pin.comments.includes(:user).each do |comment|
+            .media
+              .media-left
+                = image_tag "/img/blankavatar.jpg", class: "img-circle avatar"
+              .media-body
+                %b.media-heading
+                  = comment.user.name
+                  %span.date
+                    = time_ago_in_words(comment.created_at) + ' ago'
+                %p= simple_format(comment.message)
+
+    .panel.panel-default
+      .panel-heading
+        %b
+          Comments
+      #comment-form.panel-body
+        - if user_signed_in?
+          = simple_form_for([@pin, @pin.comments.build]) do |f|
+            = f.input :message, required: true
+            = f.button :submit
+        - else
+          %p Please login to submit comments.
