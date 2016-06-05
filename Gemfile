@@ -47,6 +47,7 @@ gem 'pry-byebug', '~> 3.4'
 
 gem 'pundit', '~> 1.1'
 
+gem 'aws-sdk', '~> 2.3'
 
 group :production do
   gem 'rails_12factor'
